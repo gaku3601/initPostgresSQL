@@ -30,3 +30,7 @@ Usage of /var/folders/q4/37490pt55dqcmksm16ycywxr0000gn/T/go-build081428788/b001
         user name
 exit status 2
 ```
+
+## 実行ファイル
+ここにある
+https://github.com/gaku3601/initPostgresSQL/releases/tag/0.0.1
