@@ -4,13 +4,14 @@ PostgresSQLのデータを全て消して、指定フォルダのSQLスクリプ
 ただそれだけのcommand lineツール  
 
 ## どうやって使うの
+実行ファイルをパスの通ったところへ配置し、以下のような感じで使う
 
-以下のような感じで使う
 ```
-initDB -s /Users/gaku/src/github.com/gaku3601/initPostgresSQL/testSql/ -d database -h localhost -p 5432 -pw password -u user
+initLocalDB -s /Users/gaku/src/github.com/gaku3601/initPostgresSQL/testSql/ -d database -h localhost -p 5432 -pw password -u user
 ```
+publicスキーマのtableをすべて削除、SQLスクリプトの全実行を行う
 
-オプション内容
+### オプション内容
 
 ```
 initDB -h
@@ -33,4 +34,4 @@ exit status 2
 
 ## 実行ファイル
 ここにある  
-https://github.com/gaku3601/initPostgresSQL/releases/tag/0.0.1
+https://github.com/gaku3601/initPostgresSQL/releases/tag/0.0.3
