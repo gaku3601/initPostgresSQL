@@ -12,17 +12,17 @@ import (
 
 //OperateDatabase struct
 type OperateDatabase struct {
-	host         string
-	database     string
-	port         int
-	user         string
-	password     string
-	sqlFilePaths []string
+	host      string
+	database  string
+	port      int
+	user      string
+	password  string
+	fileInfos []*FileInfo
 }
 
 //NewOperateDatabase constractor
-func NewOperateDatabase(host string, database string, port int, user string, password string, sqlFilePaths []string) *OperateDatabase {
-	o := &OperateDatabase{host: host, database: database, port: port, user: user, password: password, sqlFilePaths: sqlFilePaths}
+func NewOperateDatabase(host string, database string, port int, user string, password string, fileInfos []*FileInfo) *OperateDatabase {
+	o := &OperateDatabase{host: host, database: database, port: port, user: user, password: password, fileInfos: fileInfos}
 	o.allClearDatabase()
 	o.allExecSQLFile()
 	return o
@@ -55,9 +55,9 @@ func (o *OperateDatabase) allExecSQLFile() {
 		log.Fatal(err)
 	}
 	defer db.Close()
-	for _, file := range o.sqlFilePaths {
-		fmt.Println(file)
-		sql, err := readSQLFile(file)
+	for _, fileInfo := range o.fileInfos {
+		fmt.Println(fileInfo.fileName)
+		sql, err := readSQLFile(fileInfo.filePath)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -67,7 +67,7 @@ func (o *OperateDatabase) allExecSQLFile() {
 		}
 	}
 	if err == nil {
-		fmt.Println("complete🎉")
+		fmt.Println("complete")
 	}
 }
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 )
 
 func main() {
@@ -13,7 +14,8 @@ func main() {
 	userName := flag.String("u", "", "user name")
 	password := flag.String("pw", "", "password")
 	flag.Parse()
+	fmt.Println("Process Start...")
 
 	o := NewOperateFile(*sqlFolder)
-	NewOperateDatabase(*host, *dbName, *port, *userName, *password, o.filePaths)
+	NewOperateDatabase(*host, *dbName, *port, *userName, *password, o.fileInfos)
 }
